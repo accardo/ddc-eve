@@ -75,8 +75,8 @@ Page({
 	 * Date: 2019/1/12
 	 */
 	drawImg(ctx) {
-		let userInfo = app.utils.getCache('userInfo'); // 获取用户信息
-		const metrics = ctx.measureText(`${userInfo.nickName}的新年餐桌`);
+		let nickName = app.utils.getCache('nickName'); // 获取用户信息
+		const metrics = ctx.measureText(`${nickName}的新年餐桌`);
 		ctx.setFillStyle('#fff')
 		ctx.fillRect(0, 0, this.remSize(375), this.remSize(500))
 		ctx.drawImage(this.data.resultBg, 0, 80, this.remSize(375), this.remSize(334)); // 绘制背景图
@@ -100,20 +100,17 @@ Page({
 	 * Date: 2019/1/12
 	 */
 	drawText(ctx) {
-		let userInfo = app.utils.getCache('userInfo'); // 获取用户信息
-		const rrz = ctx.measureText('日日煮');
-		const metrics = ctx.measureText(`${userInfo.nickName}的新年餐桌`);
-
-		console.log(rrz.width * 1.4)
+		let nickName = app.utils.getCache('nickName'); // 获取用户信息
+		const metrics = ctx.measureText(`${nickName}的新年餐桌`);
 		ctx.setFontSize(14);
 		ctx.setFillStyle("#000");
 		ctx.fillText('日日煮', (wx.getSystemInfoSync().windowWidth / 2) - (metrics.width * 1.4 / 2) - this.remSize(34), this.remSize(28)) // 绘制头信息
-		ctx.fillText(`${userInfo.nickName}的新年餐桌`, (wx.getSystemInfoSync().windowWidth / 2) - (metrics.width * 1.4 / 2) + this.remSize(30), this.remSize(28)) // 绘制头信息
+		ctx.fillText(`${nickName}的新年餐桌`, (wx.getSystemInfoSync().windowWidth / 2) - (metrics.width * 1.4 / 2) + this.remSize(30), this.remSize(28)) // 绘制头信息
 		ctx.setTextAlign('center');
 		ctx.setFontSize(20);
 		ctx.fillText(this.data.resultText, wx.getSystemInfoSync().windowWidth / 2, 65); // 祝福居中
 		ctx.setFontSize(14);
-		ctx.fillText('扫码识别小程序码', this.remSize(170), this.remSize(445));
+		ctx.fillText('长按识别生成你的年夜饭', this.remSize(148), this.remSize(445));
 		ctx.fillText('搭配你的餐桌，讲述新年故事', this.remSize(135), this.remSize(465));
 	},
 	/*
@@ -236,9 +233,7 @@ Page({
 		wx.saveImageToPhotosAlbum({
 			filePath: that.data.canvasBg,
 			success() {
-				wx.showToast({
-					title: '保存成功'
-				})
+				app.utils.showToast('保存成功，快去分享吧', 3000);
 			},
 			fail() {
 				app.utils.showToast('保存失败')

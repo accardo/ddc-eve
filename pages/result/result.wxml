@@ -4,15 +4,11 @@
   <view class="canvas-wrap">
     <image src="{{canvasBg}}" mode="widthFix"></image>
     <view class="step-botton">
-      <button class="shareButton"
-              wx:if="{{canvasBg && saveImgBtnHidden}}" bindtap="canvasSave" >点击保存</button>
+      <button class="nextStep"
+              wx:if="{{canvasBg && saveImgBtnHidden}}" bindtap="canvasSave" >保存图片到相册</button>
       <button class="shareButton"
               wx:if="{{canvasBg && openSettingBtnHidden}}" bindopensetting='handleSetting'
               open-type="openSetting">去授权</button>
-      <button wx:if="{{canvasBg}}" class="nextStep" type="primary"
-              data-id="shareBtn" open-type="share">
-        邀请朋友参加
-      </button>
     </view>
   </view>
   <view class="wx-code">

@@ -134,10 +134,6 @@ Page({
 			return false
 		}
 		this.subSave();
-		app.utils.navigateTo('../bless/bless', {
-			deskData: JSON.stringify(this.data.scaleSrc),
-			bg: this.data.bgUrl
-		})
 	},
 	/*
 	 * Description: 提交保存数据
@@ -149,7 +145,12 @@ Page({
 			pageName: '菜谱',
 			ids: app.utils.dishId(this.data.scaleSrc)
 		}
-		app.http.$_post('clickNext', data).then(() => {});
+		app.http.$_post('clickNext', data).then(() => {
+			app.utils.navigateTo('../bless/bless', {
+				deskData: JSON.stringify(this.data.scaleSrc),
+				bg: this.data.bgUrl
+			})
+		});
 	},
     /*
      * Description: 禁止下拉刷新页面

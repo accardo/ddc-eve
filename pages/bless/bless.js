@@ -68,11 +68,6 @@ Page({
       return false
     }
     this.subSave();
-	  app.utils.navigateTo('../result/result', {
-	    resultData: JSON.stringify(this.data.blessData),
-	    bg: this.data.bg,
-	    blessText: this.data.blessText
-    })
   },
 	/*
 	 * Description: 提交保存数据
@@ -85,7 +80,13 @@ Page({
 			bless: this.data.blessText,
 			ids: app.utils.dishId(this.data.blessData)
 		}
-		app.http.$_post('clickNext', data).then(() => {});
+		app.http.$_post('clickNext', data).then(() => {
+			app.utils.navigateTo('../result/result', {
+				resultData: JSON.stringify(this.data.blessData),
+				bg: this.data.bg,
+				blessText: this.data.blessText
+			})
+		});
 	},
   /*
   * Description: 输入框聚焦  失去焦点

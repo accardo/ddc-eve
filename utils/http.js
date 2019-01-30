@@ -1,5 +1,5 @@
 import * as utils from 'util.js'
-const IPHOST = 'https://mcn-app-s.daydaycook.com.cn'; // 域名地址
+const IPHOST = 'https://mcn-app.daydaycook.com.cn'; // 域名地址
 const SYSTEM = 'program'; // 路径中系统
 const VERSION = 'v1.0.0' // 当前接口版本
 /*
@@ -44,7 +44,7 @@ function httpPromise(url, params, method) {
 					if (res.data.code === '0000') { // 数据 0000 成功返回
 						resolve(res.data);
 					} else {
-						reject(res.data.message);
+						utils.showToast(res.data.message);
 					}
 				} else {
 					reject(res.data);

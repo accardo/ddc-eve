@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="container">
+<view>
   <movable-area class="movable-wrap">
     <image src="{{bgUrl}}" class="mova-bg" mode="widthFix"></image>
     <movable-view

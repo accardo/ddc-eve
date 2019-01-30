@@ -34,27 +34,35 @@ Page({
 	bindNext(e) {
 	  const openid = app.utils.getCache('openid');
 		let userInfo = e.detail.userInfo;
-		if (openid && userInfo) {
-	  	let data = {
+		if (openid) {
+	  	 let data = {
 			  pageName: '扫码入口',
-			  nickName: userInfo.nickName,
-			  gender: userInfo.gender,
-			  language: userInfo.language,
-			  city: userInfo.city,
-			  province: userInfo.province,
-			  province: userInfo.province,
-			  avatarUrl: userInfo.avatarUrl,
+			  nickName: userInfo && userInfo.nickName || '神秘的美食家',
+			  gender: userInfo && userInfo.gender || 1,
+			  language: userInfo && userInfo.language || '未知',
+			  city: userInfo && userInfo.city || '未知',
+			  province: userInfo && userInfo.province || '未知',
+			  country: userInfo && userInfo.country || '未知',
+			  avatarUrl: userInfo && userInfo.avatarUrl || 'https://mcn-video.daydaycook.com.cn/4f4ea624af9e411f83d9ea155d8d9c87.png',
 			  otherOpenId: this.data.uid
 		  }
-		  console.log(data, 'orderUid');
-	    app.http.$_post('putUserInfo', data).then((xhr) => {
-			    app.utils.setCache('uid', xhr.data.uid);
-			    app.utils.setCache('qrCode', xhr.data.qrCode);
-	    })
-	    app.utils.setCache('userInfo', userInfo);
-	    app.utils.navigateTo('../desk/desk');
-    }
+			this.getPutUserInfo(data);
+		} else {
+			app.utils.showToast('openid不存在，请重新进入');
+		}
   },
+	getPutUserInfo(data) {
+		wx.showLoading({
+			title: '请稍后...',
+		})
+		app.http.$_post('putUserInfo', data).then((xhr) => {
+			wx.hideLoading();
+			app.utils.setCache('uid', xhr.data.uid);
+			app.utils.setCache('qrCode', xhr.data.qrCode);
+			app.utils.setCache('nickName', data.nickName);
+			app.utils.navigateTo('../desk/desk');
+		})
+	},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
