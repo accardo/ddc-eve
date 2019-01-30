@@ -33,6 +33,7 @@ Page({
 	 */
 	bindNext(e) {
 	  const openid = app.utils.getCache('openid');
+	  console.log(openid, 'openid');
 		let userInfo = e.detail.userInfo;
 		if (openid) {
 	  	 let data = {

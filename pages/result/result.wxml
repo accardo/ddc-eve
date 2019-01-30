@@ -11,6 +11,9 @@
               open-type="openSetting">去授权</button>
     </view>
   </view>
+  <view class="adunit">
+    <ad unit-id="adunit-57637b47d25d1412"></ad>
+  </view>
   <view class="wx-code">
     <image src="{{shareImg}}" mode="widthFix" bindtap="bindNavTo"></image>
   </view>

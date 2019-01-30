@@ -11,6 +11,7 @@ App({
 	  wx.login({
 		  success: res => {
 			  http.$_post('getOpenId', {jsCode: res.code}).then(({data}) => {
+				  console.log(data.openid, '入口');
 				  utils.setCache('openid', data.openid)
 				  utils.setCache('sessionKey', data.session_key)
 			  })

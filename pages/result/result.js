@@ -109,9 +109,9 @@ Page({
 		ctx.setTextAlign('center');
 		ctx.setFontSize(20);
 		ctx.fillText(this.data.resultText, wx.getSystemInfoSync().windowWidth / 2, 65); // 祝福居中
-		ctx.setFontSize(14);
-		ctx.fillText('长按识别生成你的年夜饭', this.remSize(148), this.remSize(445));
-		ctx.fillText('搭配你的餐桌，讲述新年故事', this.remSize(135), this.remSize(465));
+		ctx.setFontSize(16);
+		ctx.fillText('长按识别生成你的年夜饭', this.remSize(170), this.remSize(465));
+	 	// ctx.fillText('搭配你的餐桌，讲述新年故事', this.remSize(135), this.remSize(465));
 	},
 	/*
 		*Description: 按照375大小转换px 计算不同屏幕设备大小转换
