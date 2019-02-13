@@ -35,6 +35,7 @@ Page({
 			pageName: '菜谱'
 		}
 		app.http.$_post('getCookBook', data).then((xhr) => {
+			console.log(xhr)
 			this.setData({
 				viewData: xhr.data,
 				listData: xhr.data[0].dishes,
